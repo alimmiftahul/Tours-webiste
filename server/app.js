@@ -1,15 +1,11 @@
 import express from 'express';
 import helmet from 'helmet';
+import tourRouter from './routes/tourRoutes.js';
+import userRouter from './routes/userRoutes.js';
 
-const app = express();
+var app = express();
 
-app.get('/', (req, res) => {
-  res.status(200).render('base');
-});
-app.use('/api/v1/tours');
-app.use('/api/v1/users');
-app.use('/api/v1/reviews');
+app.use(tourRouter);
+app.use(userRouter);
 
-app.use(helmet());
-
-module.exports = app;
+export default app;
